@@ -13,7 +13,7 @@
         </div>
         <div class="text-base md:text-lg font-bold">
           {{ data.value }}
-          <spans
+          <span
             v-if="data.trend"
             class="text-[12px] md:text-sm"
             :class="data.trendImpact === 'positive' ? 'text-success' : 'text-error'"
@@ -23,7 +23,7 @@
               :color="data.trendImpact === 'positive' ? 'success' : 'error'"
             />
             {{ data.trend }}
-          </spans>
+          </span>
         </div>
       </v-col>
     </v-row>

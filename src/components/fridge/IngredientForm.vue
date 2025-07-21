@@ -241,7 +241,7 @@ const validateForm = (): string | null => {
   if (form.quantity === null || Number(form.quantity) <= 0) return '數量需大於 0';
   if (!form.unit.trim()) return '請填寫單位';
   if (form.tags?.length === 0) return '請選擇至少一個標籤';
-  if (Number(form.price) < 0) return '價格不能小於 0, 若不知道請填 0';
+  if (Number(form.price) < 0) return '價格不能小於 0';
   return null;
 };
 

@@ -1,11 +1,11 @@
 <template>
-  <v-container class="pb-15" :max-width="1500" :style="{ height: '100vh' }">
+  <v-container class="pt-6 pb-15" :style="{ height: '100vh' }">
     <!-- <h2 class="text-4xl text-weight-bold mb-4 caveat-font mx-3 my-2">
       Fridge 🍽️
     </h2> -->
 
     <!-- Search Bar -->
-    <v-row align="center" class="mb-1">
+    <v-row align="center" class="mb-1" dense>
       <v-col cols="12" md="10"
         ><v-text-field
           v-model="keyword"

@@ -42,17 +42,15 @@ export const useIngredientStore = defineStore('ingredient', () => {
     }
   }
 
-  async function addIngredient(newItem: Omit<Ingredient, 'id'>) {
+  async function addIngredient(input: Ingredient | Ingredient[]) {
     loading.value = true;
     error.value = null;
     try {
-      const user = await getCurrentUser();
-      const payload = toDbIngredient(newItem);
+      await getCurrentUser();
+      const items = Array.isArray(input) ? input : [input];
+      const payloads = items.map((item) => toDbIngredient({ ...item }));
 
-      const { error: insertError } = await supabase
-        .from('ingredients')
-        .insert([{ ...payload, user_id: user.id }])
-        .select();
+      const { error: insertError } = await supabase.from('ingredients').insert(payloads).select();
 
       if (insertError) throw insertError;
       await fetchIngredients();

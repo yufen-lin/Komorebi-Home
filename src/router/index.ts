@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/shopping-list',
     name: 'Shopping List',
-    component: UnderConstruction,
+    component: () => import('../views/ShoppingListView.vue'),
     meta: { requiresAuth: true },
   },
   {

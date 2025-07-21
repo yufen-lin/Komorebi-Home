@@ -69,12 +69,15 @@ import IngredientCostChart from '../components/dashboard/IngredientCostChart.vue
 import IngredientInventoryChart from '../components/dashboard/IngredientInventoryChart.vue';
 
 import { useIngredientStore } from '../stores/ingredients';
+import { useShoppingListStore } from '@/stores/shoppingList';
 import { storeToRefs } from 'pinia';
 import type { StatCardData } from '@/type';
 import { getDateDiffInfo } from '@/utils/dateUtils';
 
 const ingredientStore = useIngredientStore();
+const shoppingListStore = useShoppingListStore();
 const { ingredients, loading } = storeToRefs(ingredientStore);
+const { items } = storeToRefs(shoppingListStore);
 
 const statsData: StatCardData[] = [
   {
@@ -96,17 +99,19 @@ const statsData: StatCardData[] = [
   {
     icon: 'mdi-account-group',
     title: '總累積客人數',
-    value: '2',
+    value: '0',
   },
   {
     icon: 'mdi-cart-variant',
     title: '待買清單',
-    value: '5',
+    value: items.value.filter((item) => !item.deleted && item.status === 'active' && !item.checked)
+      .length,
   },
 ];
 
 onMounted(async () => {
   await ingredientStore.fetchIngredients();
+  await shoppingListStore.fetchItems();
 });
 
 const safeIngredients = computed(() => (loading ? ingredients.value : []));

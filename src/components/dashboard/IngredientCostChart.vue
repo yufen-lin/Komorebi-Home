@@ -146,7 +146,7 @@ const getChartOption = (isDark?: boolean): EChartsOption => {
       {
         text: '此圖表目前僅供展示使用，非實際資料',
         left: 'center',
-        bottom: 0,
+        top: '75',
         textStyle: {
           fontSize: 12,
           color: isDark ? '#797979' : '#adadad',

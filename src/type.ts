@@ -49,7 +49,13 @@ export interface Ingredient {
   price: number | null;
 }
 
-export type ShoppingListItem = Partial<Ingredient> & { checked: boolean };
+export type ShoppingListItem = {
+  id: string;
+  text: string;
+  checked: boolean;
+  status: 'active' | 'converted';
+  deleted: boolean;
+};
 
 export type ExpirationStatus = 'expired' | 'danger' | 'warning' | 'safe' | 'normal';
 
