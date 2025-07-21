@@ -19,6 +19,12 @@ export const NAVIGATION_LIST: NavigationItem[] = [
     path: '/shopping-list',
     visible: true,
   },
+  {
+    label: 'Menu',
+    icon: 'mdi-food',
+    path: '/menu',
+    visible: true,
+  },
 ];
 
 export const STORAGE_ZONES: {

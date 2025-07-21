@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
 import HomeView from '../views/HomeView.vue';
-import UnderConstruction from '../components/UnderConstruction.vue';
 
 const routes = [
   {
@@ -27,7 +26,7 @@ const routes = [
   {
     path: '/menu',
     name: 'Menu',
-    component: UnderConstruction,
+    component: () => import('../views/MenuView.vue'),
     meta: { requiresAuth: false },
   },
 ];

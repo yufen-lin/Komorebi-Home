@@ -105,7 +105,7 @@ const addItem = async (e: KeyboardEvent | MouseEvent) => {
 
 const quickAdd = async (item: { text: string }) => {
   await shoppingListStore.addItem({
-    ...item,
+    text: item.text,
     checked: false,
     status: 'active',
     deleted: false,
